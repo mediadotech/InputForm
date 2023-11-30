@@ -1,0 +1,2 @@
+# InputFormCommonFile
+MaingPot用データパターン用入力ファイルの共有マクロファイル
