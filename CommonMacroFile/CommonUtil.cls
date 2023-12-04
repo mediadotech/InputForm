@@ -9,17 +9,12 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 Option Explicit
 
-Dim errorStr As errorConst
+Dim errorStr As CommonErrorConst
 Dim commonStr As commonConst
 
 Private Sub Class_Initialize()
-    Set errorStr = New errorConst
+    Set errorStr = New CommonErrorConst
     Set commonStr = New commonConst
-End Sub
-
-'必須入力警告
-Public Sub showReqMsg(row As Integer, col As Integer)
-    msgBox errorStr.E0000 & vbCrLf & "未入力行：" & row & vbCrLf & "未入力列：" & Cells(1, col).Value, vbCritical
 End Sub
 
 '全角確認
@@ -56,7 +51,7 @@ Public Function checkNarrowNum(str As String) As String
     reg.Global = True
     '指定セルの半額数字を空文字に置き換える
     checkNarrowNum = reg.Replace(str, "")
-      Set reg = Nothing
+    Set reg = Nothing
 End Function
 
 '文字列がカタカナになっているか確認
@@ -87,8 +82,8 @@ Public Function checkNarrowNumAndHyphen(str As String) As String
       Set reg = Nothing
 End Function
 
-'正規表現で値がメールアドレスの形式かチェックする
-Function checkMailAdess(getVal As Variant) As Boolean
+'正規表現で値がメールアドレスの形式を確認する
+Private Function checkMailAdess(getVal As Variant) As Boolean
     Dim reg As Object
     Set reg = CreateObject("VBScript.RegExp")
     ' メールアドレス形式の正規表現
@@ -106,6 +101,21 @@ Public Function findBusinessName(str As String) As Boolean
     findBusinessName = commonStr.getBusinessNameList.Exists(str)
 End Function
 
+'発行形態確認
+Public Function findPublishType(str As String) As Boolean
+    findPublishType = commonStr.getPublishTypeList.Exists(str)
+End Function
+
+'取次会社名確認
+Public Function findAgencyCompanyName(str As String) As Boolean
+    findAgencyCompanyName = commonStr.getAgencyCompanyNameList.Exists(str)
+End Function
+
+'入稿グループ確認
+Public Function findSummitGroupName(str As String) As Boolean
+    findSummitGroupName = commonStr.getSummitGroupNameList.Exists(str)
+End Function
+    
 '全角カタカナ確認
 Public Function checkWideKana(row As Integer, col As Integer) As String
     checkWideKana = "OK"
@@ -118,6 +128,16 @@ Public Function checkWideKana(row As Integer, col As Integer) As String
     End If
 End Function
 
+'屋号確認
+Public Function checkBusinessName(row As Integer, col As Integer) As String
+    checkBusinessName = "OK"
+    Dim businessName As String
+    businessName = Cells(row, col).Value
+    If Not findBusinessName(businessName) Then
+        checkBusinessName = "E0007"
+        Exit Function
+    End If
+End Function
 
 '電話番号確認
 Public Function checkNumberWithHyphen(row As Integer, col As Integer) As String
@@ -138,7 +158,7 @@ Public Function checkMailAdressList(row As Integer, col As Integer) As String
     targetStr = Cells(row, col).Value
     '全角文字が含まれている
     If hasZenkaku(targetStr) Then
-        checkMailAdressList = "E0006"
+        checkMailAdressList = "E0005"
         Exit Function
     End If
     If InStr(targetStr, ",") Then
@@ -147,16 +167,43 @@ Public Function checkMailAdressList(row As Integer, col As Integer) As String
         mailAdressList = Split(targetStr, ",")
         For i = LBound(mailAdressList) To UBound(mailAdressList)
             If Not checkMailAdess(mailAdressList(i)) Then
-                checkMailAdressList = "E0006"
+                checkMailAdressList = "E0005"
                 Exit Function
             End If
         Next i
     Else
          If Not checkMailAdess(targetStr) Then
-            checkMailAdressList = "E0006"
+            checkMailAdressList = "E0005"
             Exit Function
         End If
     End If
+End Function
+
+'発行形態項目確認
+Public Function checkPublishTypeList(row As Integer, col As Integer) As String
+    checkPublishTypeList = "OK"
+    Dim targetStr As String
+    targetStr = Cells(row, col).Value
+    '全角文字が含まれている
+    If InStr(targetStr, ",") Then
+        Dim publishTypeList As Variant
+        Dim i As Long
+        publishTypeList = Split(targetStr, ",")
+        For i = LBound(publishTypeList) To UBound(publishTypeList)
+            Dim listStr As String
+            listStr = publishTypeList(i)
+            If Not findPublishType(listStr) Then
+                checkPublishTypeList = "E0006"
+                Exit Function
+            End If
+        Next i
+    Else
+         If Not findPublishType(targetStr) Then
+            checkPublishTypeList = "E0006"
+            Exit Function
+        End If
+    End If
+    
 End Function
 
 '住所区分確認
@@ -166,7 +213,7 @@ Public Function checkAdressDivision(row As Integer, col As Integer) As String
     targetStr = Cells(row, col).Value
     '半角数字かつ１また２以外の数字がある
     If Len(checkNarrowNum(targetStr)) > 0 Or Cells(row, col).Value < 1 Or Cells(row, col).Value > 2 Then
-        checkAdressDivision = "E0004"
+        checkAdressDivision = "E0003"
         Exit Function
     End If
 End Function
@@ -178,7 +225,7 @@ Public Function checkZipCode(row As Integer, col As Integer) As String
     targetStr = Cells(row, col).Value
     '半角数字ではないかつ7文字ではない
     If Len(checkNarrowNum(targetStr)) > 0 Or Not Len(targetStr) = 7 Then
-        checkZipCode = "E0005"
+        checkZipCode = "E0004"
         Exit Function
     End If
 End Function
