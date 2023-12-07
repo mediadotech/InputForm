@@ -211,7 +211,7 @@ Public Function checkAdressDivision(row As Integer, col As Integer) As String
     checkAdressDivision = "OK"
     Dim targetStr As String
     targetStr = Cells(row, col).Value
-    '”¼Šp”Žš‚©‚Â‚P‚Ü‚½‚QˆÈŠO‚Ì”Žš‚ª‚ ‚é
+    '”¼Šp”ŽšA1‚Ü‚½2ˆÈŠO‚Ì”Žš‚ª‚ ‚é
     If Len(checkNarrowNum(targetStr)) > 0 Or Cells(row, col).Value < 1 Or Cells(row, col).Value > 2 Then
         checkAdressDivision = "E0003"
         Exit Function

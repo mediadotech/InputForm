@@ -17,7 +17,7 @@ End Sub
 
 '必須入力警告
 Public Sub showReqMsg(row As Integer, col As Integer)
-    msgBox errorStr.E0000 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "未入力行：" & row, vbCritical
+    msgBox errorStr.E0000 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col, vbCritical
 End Sub
 
 '警告メッセージ
