@@ -254,6 +254,8 @@ Public Function addressDivisionCheck(row As Integer, col As Integer) As Object
     Dim targetRow As Integer
     targetRow = row
     
+    targetResult.setRow = targetRow
+    
     'ZŠ‹æ•ª
     Dim adressDivision As Integer
     adressDivision = col
@@ -264,38 +266,34 @@ Public Function addressDivisionCheck(row As Integer, col As Integer) As Object
     Dim adress As Integer
     adress = adressDivision + 2
      
+     
     'ZŠ‹æ•ª
+    targetResult.setCol = adressDivision
     targetResult.setResult = checkFlg(targetRow, adressDivision)
     If Not targetResult.result = "OK" Then
         targetResult.setResult = "E0003"
-        targetResult.setRow = targetRow
-        targetResult.setCol = adressDivision
         Set addressDivisionCheck = targetResult
         Exit Function
     End If
 
     '—X•Ö”Ô†
+    targetResult.setCol = zipCode
     targetResult.setResult = checkZipCode(targetRow, zipCode)
     If Not targetResult.result = "OK" Then
-       targetResult.setRow = targetRow
-       targetResult.setCol = zipCode
        Set addressDivisionCheck = targetResult
        Exit Function
     End If
   
     'ZŠ
+    targetResult.setCol = adress
     If IsEmpty(Cells(targetRow, adress).Value) = True Then
         targetResult.setResult = ""
-        targetResult.setRow = targetRow
-        targetResult.setCol = adress
         Set addressDivisionCheck = targetResult
         Exit Function
     End If
     
     '€–Ú‚É–â‘è‚È‚µ
     targetResult.setResult = "OK"
-    targetResult.setRow = targetRow
-    targetResult.setCol = adress
     Set addressDivisionCheck = targetResult
     
 End Function
