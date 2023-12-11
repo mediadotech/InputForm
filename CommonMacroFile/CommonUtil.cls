@@ -64,7 +64,7 @@ Public Function checkUpperChar(str As String) As String
     '•¶Žš—ñ‚ÌÅŒã‚Ü‚ÅŒŸõ‚·‚é
     reg.Global = True
     'Žw’èƒZƒ‹‚Ì”¼Šp‘å‰p•¶Žš‚ð‹ó•¶Žš‚É’u‚«Š·‚¦‚é
-    checkNarrowNum = reg.Replace(str, "")
+    checkUpperChar = reg.Replace(str, "")
     Set reg = Nothing
 End Function
 
@@ -304,7 +304,7 @@ Private Function checkZipCode(row As Integer, col As Integer) As String
     Dim targetStr As String
     targetStr = Cells(row, col).Value
     '”¼Šp”Žš‚Å‚Í‚È‚¢‚©‚Â7•¶Žš‚Å‚Í‚È‚¢
-    If Len(checkNarrowNum(targetStr)) > 0 Or Not Len(targetStr) = 7 Then
+    If Len(checkNarrowNumAndHyphen(targetStr)) > 0 Or Not Len(targetStr) = 8 Then
         checkZipCode = "E0004"
         Exit Function
     End If

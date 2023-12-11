@@ -17,7 +17,7 @@ Private Const E0001_MSG As String = "“ü—Í‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ" & vbCrLf & "‘SŠpƒJƒ
 '“d˜b”Ô†
 Private Const E0002_MSG As String = "”Ô†‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ" & vbCrLf & "iƒnƒCƒtƒ“i-jž‚Ý‚Ì”¼Šp”Žšj"
 'ZŠ‹æ•ª
-Private Const E0003_MSG As String = "ZŠ‹æ•ª‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ" & vbCrLf & "”¼Šp”ŽšA1i‘“àjA2i‘ŠOj"
+Private Const E0003_MSG As String = "ZŠ‹æ•ª‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ" & vbCrLf & "”¼Šp”ŽšA0i‘“àjA1i‘ŠOj"
 '—X•Ö”Ô†
 Private Const E0004_MSG As String = "—X•Ö”Ô†‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ" & vbCrLf & "7•¶ŽšA”¼Šp”Žš"
 'ƒ[ƒ‹ƒAƒhƒŒƒX
