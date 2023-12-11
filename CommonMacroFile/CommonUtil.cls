@@ -45,13 +45,40 @@ Public Function checkNarrowNum(str As String) As String
     '正規表現クラスオブジェクト
     Dim reg
     Set reg = CreateObject("VBScript.RegExp")
-    '検索条件＝半額数字
+    '検索条件＝半角数字
     reg.Pattern = "[0-9]"
     '文字列の最後まで検索する
     reg.Global = True
-    '指定セルの半額数字を空文字に置き換える
+    '指定セルの半角数字を空文字に置き換える
     checkNarrowNum = reg.Replace(str, "")
     Set reg = Nothing
+End Function
+
+'文字列が半角大英文字になっているか確認
+Public Function checkUpperChar(str As String) As String
+    '正規表現クラスオブジェクト
+    Dim reg
+    Set reg = CreateObject("VBScript.RegExp")
+    '検索条件＝半角大英文字
+    reg.Pattern = "[A-Z]"
+    '文字列の最後まで検索する
+    reg.Global = True
+    '指定セルの半角大英文字を空文字に置き換える
+    checkNarrowNum = reg.Replace(str, "")
+    Set reg = Nothing
+End Function
+
+
+'文字列が半角大文字英数字になっているか確認
+Public Function checkNarrowUpperCharNum(str As String) As String
+    Dim targetStr As String
+    '指定セルの半角数字を空文字に置き換える
+    targetStr = checkNarrowNum(str)
+    '指定セルの半角大英文字を空文字に置き換える
+    targetStr = checkUpperChar(targetStr)
+    
+    checkNarrowUpperCharNum = targetStr
+    
 End Function
 
 '文字列がカタカナになっているか確認
@@ -73,11 +100,11 @@ Public Function checkNarrowNumAndHyphen(str As String) As String
     '正規表現クラスオブジェクト
     Dim reg
     Set reg = CreateObject("VBScript.RegExp")
-    '検索条件＝半額数字
+    '検索条件＝半角数字
     reg.Pattern = "[0-9\-]"
     '文字列の最後まで検索する
     reg.Global = True
-    '指定セルの半額数字を空文字に置き換える
+    '指定セルの半角数字を空文字に置き換える
     checkNarrowNumAndHyphen = reg.Replace(str, "")
       Set reg = Nothing
 End Function
@@ -94,6 +121,18 @@ Private Function checkMailAdess(getVal As Variant) As Boolean
     reg.IgnoreCase = True
     checkMailAdess = reg.Test(getVal)
     Set reg = Nothing
+End Function
+
+'フラグ（0,1系）の確認
+Public Function checkFlg(row As Integer, col As Integer) As String
+    checkFlg = "OK"
+    Dim targetStr As String
+    targetStr = Cells(row, col).Value
+    '全角数字かつ0また1以外の数字がある
+    If Len(checkNarrowNum(targetStr)) > 0 Or Cells(row, col).Value < 0 Or Cells(row, col).Value > 1 Then
+        checkFlg = "NG"
+        Exit Function
+    End If
 End Function
 
 '屋号確認
@@ -206,20 +245,61 @@ Public Function checkPublishTypeList(row As Integer, col As Integer) As String
     
 End Function
 
-'住所区分確認
-Public Function checkAdressDivision(row As Integer, col As Integer) As String
-    checkAdressDivision = "OK"
-    Dim targetStr As String
-    targetStr = Cells(row, col).Value
-    '半角数字かつ１また２以外の数字がある
-    If Len(checkNarrowNum(targetStr)) > 0 Or Cells(row, col).Value < 1 Or Cells(row, col).Value > 2 Then
-        checkAdressDivision = "E0003"
+ '住所区分からの項目共通処理
+Public Function addressDivisionCheck(row As Integer, col As Integer) As Object
+    
+    Dim targetResult As InputResult
+    Set targetResult = New InputResult
+    
+    Dim targetRow As Integer
+    targetRow = row
+    
+    targetResult.setRow = targetRow
+    
+    '住所区分
+    Dim adressDivision As Integer
+    adressDivision = col
+    '郵便番号
+    Dim zipCode As Integer
+    zipCode = adressDivision + 1
+    '住所
+    Dim adress As Integer
+    adress = adressDivision + 2
+     
+     
+    '住所区分
+    targetResult.setCol = adressDivision
+    targetResult.setResult = checkFlg(targetRow, adressDivision)
+    If Not targetResult.result = "OK" Then
+        targetResult.setResult = "E0003"
+        Set addressDivisionCheck = targetResult
         Exit Function
     End If
+
+    '郵便番号
+    targetResult.setCol = zipCode
+    targetResult.setResult = checkZipCode(targetRow, zipCode)
+    If Not targetResult.result = "OK" Then
+       Set addressDivisionCheck = targetResult
+       Exit Function
+    End If
+  
+    '住所
+    targetResult.setCol = adress
+    If IsEmpty(Cells(targetRow, adress).Value) = True Then
+        targetResult.setResult = ""
+        Set addressDivisionCheck = targetResult
+        Exit Function
+    End If
+    
+    '項目に問題なし
+    targetResult.setResult = "OK"
+    Set addressDivisionCheck = targetResult
+    
 End Function
 
 '郵便番号確認
-Public Function checkZipCode(row As Integer, col As Integer) As String
+Private Function checkZipCode(row As Integer, col As Integer) As String
     checkZipCode = "OK"
     Dim targetStr As String
     targetStr = Cells(row, col).Value

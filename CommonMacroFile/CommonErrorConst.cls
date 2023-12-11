@@ -29,7 +29,7 @@ Private Const E0007_MSG As String = "屋号が正しくなりません"
 
 '<支払先登録>
 '支払先コード
-Private Const E0100_MSG As String = "支払先項目また取引先コードが入力されてません"
+Private Const E0100_MSG As String = "支払先登録の項目また取引先コードが入力されてません"
 Private Const E0101_MSG As String = "支払先コードは5文字にしてください"
 Private Const E0102_MSG As String = "支払先コードは半角英数字です"
 '登録番号
@@ -41,7 +41,7 @@ Private Const E0106_MSG As String = "発行形態追加入力フラグが正しくありません" &
 
 '<出版社登録>
 '支払先名
-Private Const E0200_MSG As String = "出版社項目また支払先名が入力されてません"
+Private Const E0200_MSG As String = "出版社登録の項目また支払先名が入力されてません"
 '出版社経理コード必須フラグ
 Private Const E0201_MSG As String = "出版社経理コード必須が正しくありません" & vbCrLf & "半角数字、0（必須ではない）、1（必須）"
 '音声ファイル再生許諾フラグ
@@ -57,6 +57,20 @@ Private Const E0207_MSG As String = "サービス開始日が正しくなりません" & vbCrLf 
 'サービス終了日
 Private Const E0208_MSG As String = "サービス終了日が正しくなりません" & vbCrLf & "yyyy/mm/dd"
 Private Const E0209_MSG As String = "サービス開始日より前の日付は入力できません"
+
+'<書店会社情報登録>
+'書店会社ID
+Private Const E0300_MSG As String = "書店会社情報の項目また書店会社IDが入力されてません"
+Private Const E0301_MSG As String = "書店会社IDドが正しくありません" & vbCrLf & "25文字以内、半角大文字英数字、頭文字は半角大文字英字"
+'取引先コード
+Private Const E0302_MSG As String = "取引先コードが正しくありません" & vbCrLf & "5文字、半角英数字"
+'セルシスビューア閲覧権限
+Private Const E0303_MSG As String = "セルシスビューア閲覧権限が正しくありません" & vbCrLf & "半角数字、0（なし）、1（あり）"
+'コンテンツDL権限
+Private Const E0304_MSG As String = "コンテンツDL権限が正しくありません" & vbCrLf & "半角数字、0（なし）、1（あり）"
+'コンテンツDL上限数_週
+Private Const E0305_MSG As String = "コンテンツDL上限数_週が正しくありません" & vbCrLf & "1～300、半角数字"
+
 
 '共通
 Public Property Get E0000() As String
@@ -161,4 +175,29 @@ End Property
 
 Public Property Get E0209() As String
     E0209 = E0209_MSG
+End Property
+
+'書店会社情報登録
+Public Property Get E0300() As String
+    E0300 = E0300_MSG
+End Property
+
+Public Property Get E0301() As String
+    E0301 = E0301_MSG
+End Property
+
+Public Property Get E0302() As String
+    E0302 = E0302_MSG
+End Property
+
+Public Property Get E0303() As String
+    E0303 = E0303_MSG
+End Property
+
+Public Property Get E0304() As String
+    E0304 = E0304_MSG
+End Property
+
+Public Property Get E0305() As String
+    E0305 = E0305_MSG
 End Property
