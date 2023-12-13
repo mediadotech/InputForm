@@ -95,25 +95,40 @@ Public Function checkKatakana(str As String) As String
       Set reg = Nothing
 End Function
 
-'文字列が半角数字とハイフンになっているか確認
-Public Function checkNarrowNumAndHyphen(str As String) As String
+'正規表現で電話番号の形式を確認する
+Public Function checkTelNum(str As String) As String
     '正規表現クラスオブジェクト
     Dim reg
     Set reg = CreateObject("VBScript.RegExp")
-    '検索条件＝半角数字
-    reg.Pattern = "[0-9\-]"
+    '電話番号形式の正規表現
+    reg.Pattern = "0\d{1,4}-\d{1,4}-\d{4}"
     '文字列の最後まで検索する
     reg.Global = True
     '指定セルの半角数字を空文字に置き換える
-    checkNarrowNumAndHyphen = reg.Replace(str, "")
-      Set reg = Nothing
+    checkTelNum = reg.Replace(str, "")
+    Set reg = Nothing
 End Function
 
-'正規表現で値がメールアドレスの形式を確認する
+'正規表現で郵便番号の形式を確認する
+Public Function checkZipCode(str As String) As String
+    '正規表現クラスオブジェクト
+    Dim reg
+    Set reg = CreateObject("VBScript.RegExp")
+    '郵便番号形式の正規表現
+    reg.Pattern = "\d{3}-\d{4}"
+    '文字列の最後まで検索する
+    reg.Global = True
+    '指定セルの半角数字を空文字に置き換える
+    checkZipCode = reg.Replace(str, "")
+    Set reg = Nothing
+End Function
+
+
+'正規表現でメールアドレスの形式を確認する
 Private Function checkMailAdess(getVal As Variant) As Boolean
     Dim reg As Object
     Set reg = CreateObject("VBScript.RegExp")
-    ' メールアドレス形式の正規表現
+    'メールアドレス形式の正規表現
     reg.Pattern = "^[a-zA-Z0-9]+([a-zA-Z0-9\._-]){0,63}@[a-zA-Z0-9-]+\.(?:[\.a-zA-Z0-9-]+)*$"
    '文字列の最後まで検索する
     reg.Global = True
@@ -124,13 +139,25 @@ Private Function checkMailAdess(getVal As Variant) As Boolean
 End Function
 
 'フラグ（0,1系）の確認
-Public Function checkFlg(row As Integer, col As Integer) As String
-    checkFlg = "OK"
+Public Function checkCommonFlg(row As Integer, col As Integer) As String
+    checkCommonFlg = "OK"
     Dim targetStr As String
     targetStr = Cells(row, col).Value
     '全角数字かつ0また1以外の数字がある
     If Len(checkNarrowNum(targetStr)) > 0 Or Cells(row, col).Value < 0 Or Cells(row, col).Value > 1 Then
-        checkFlg = "NG"
+        checkCommonFlg = "NG"
+        Exit Function
+    End If
+End Function
+
+'フラグ（1,2系）の確認
+Public Function checkInputFlg(row As Integer, col As Integer) As String
+    checkInputFlg = "OK"
+    Dim targetStr As String
+    targetStr = Cells(row, col).Value
+    '全角数字かつ1また2以外の数字がある
+    If Len(checkNarrowNum(targetStr)) > 0 Or Cells(row, col).Value < 1 Or Cells(row, col).Value > 2 Then
+        checkInputFlg = "NG"
         Exit Function
     End If
 End Function
@@ -179,13 +206,13 @@ Public Function checkBusinessName(row As Integer, col As Integer) As String
 End Function
 
 '電話番号確認
-Public Function checkNumberWithHyphen(row As Integer, col As Integer) As String
-    checkNumberWithHyphen = "OK"
+Public Function telNumCheck(row As Integer, col As Integer) As String
+    telNumCheck = "OK"
     Dim targetStr As String
     targetStr = Cells(row, col).Value
-    'ハイフンが含まれてるのかかる数字とハイフン以外の文字がある
-    If InStr(targetStr, "-") = 0 Or Len(checkNarrowNumAndHyphen(targetStr)) > 0 Then
-        checkNumberWithHyphen = "E0002"
+    '電話番号いがに形式である
+    If Len(checkTelNum(targetStr)) > 0 Then
+        telNumCheck = "E0002"
         Exit Function
     End If
 End Function
@@ -269,21 +296,23 @@ Public Function addressDivisionCheck(row As Integer, col As Integer) As Object
      
     '住所区分
     targetResult.setCol = adressDivision
-    targetResult.setResult = checkFlg(targetRow, adressDivision)
+    targetResult.setResult = checkInputFlg(targetRow, adressDivision)
     If Not targetResult.result = "OK" Then
         targetResult.setResult = "E0003"
         Set addressDivisionCheck = targetResult
         Exit Function
     End If
 
-    '郵便番号
-    targetResult.setCol = zipCode
-    targetResult.setResult = checkZipCode(targetRow, zipCode)
-    If Not targetResult.result = "OK" Then
-       Set addressDivisionCheck = targetResult
-       Exit Function
+    If Cells(targetRow, adressDivision).Value = 1 Then
+        '郵便番号
+        targetResult.setCol = zipCode
+        targetResult.setResult = zipCodeCheck(targetRow, zipCode)
+        If Not targetResult.result = "OK" Then
+           Set addressDivisionCheck = targetResult
+           Exit Function
+        End If
     End If
-  
+
     '住所
     targetResult.setCol = adress
     If IsEmpty(Cells(targetRow, adress).Value) = True Then
@@ -299,13 +328,13 @@ Public Function addressDivisionCheck(row As Integer, col As Integer) As Object
 End Function
 
 '郵便番号確認
-Private Function checkZipCode(row As Integer, col As Integer) As String
-    checkZipCode = "OK"
+Private Function zipCodeCheck(row As Integer, col As Integer) As String
+    zipCodeCheck = "OK"
     Dim targetStr As String
     targetStr = Cells(row, col).Value
     '半角数字ではないかつ7文字ではない
-    If Len(checkNarrowNumAndHyphen(targetStr)) > 0 Or Not Len(targetStr) = 8 Then
-        checkZipCode = "E0004"
+    If Len(checkZipCode(targetStr)) > 0 Or Not Len(targetStr) = 8 Then
+        zipCodeCheck = "E0004"
         Exit Function
     End If
 End Function
