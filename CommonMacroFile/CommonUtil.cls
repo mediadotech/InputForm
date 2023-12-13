@@ -115,7 +115,8 @@ Public Function checkZipCode(str As String) As String
     Dim reg
     Set reg = CreateObject("VBScript.RegExp")
     '—X•Ö”Ô†Œ`Ž®‚Ì³‹K•\Œ»
-    reg.Pattern = "\d{3}-\d{4}"
+    'reg.Pattern = "\d{3}-\d{4}"
+    reg.Pattern = "\d{7}"
     '•¶Žš—ñ‚ÌÅŒã‚Ü‚ÅŒŸõ‚·‚é
     reg.Global = True
     'Žw’èƒZƒ‹‚Ì”¼Šp”Žš‚ð‹ó•¶Žš‚É’u‚«Š·‚¦‚é
@@ -333,7 +334,7 @@ Private Function zipCodeCheck(row As Integer, col As Integer) As String
     Dim targetStr As String
     targetStr = Cells(row, col).Value
     '”¼Šp”Žš‚Å‚Í‚È‚¢‚©‚Â7•¶Žš‚Å‚Í‚È‚¢
-    If Len(checkZipCode(targetStr)) > 0 Or Not Len(targetStr) = 8 Then
+    If Len(checkZipCode(targetStr)) > 0 Or Not Len(targetStr) = 7 Then
         zipCodeCheck = "E0004"
         Exit Function
     End If

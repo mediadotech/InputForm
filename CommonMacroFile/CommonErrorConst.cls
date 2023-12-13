@@ -17,9 +17,9 @@ Private Const E0001_MSG As String = "全角カタカナ入力で入力してください"
 '電話番号
 Private Const E0002_MSG As String = "電話番号が正しくないです"
 '住所区分
-Private Const E0003_MSG As String = "住所区分が正しくないです" & vbCrLf & "半角数字、0（国内）、1（国外）"
+Private Const E0003_MSG As String = "住所区分が正しくないです" & vbCrLf & "半角数字、1（国内）、2（国外）"
 '郵便番号
-Private Const E0004_MSG As String = "郵便番号が正しくないです"
+Private Const E0004_MSG As String = "郵便番号が正しくないです" & vbCrLf & "半角数字、7文字"
 'メールアドレス
 Private Const E0005_MSG As String = "メールアドレスが正しくないです"
 '発行形態
