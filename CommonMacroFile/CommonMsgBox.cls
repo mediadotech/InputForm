@@ -44,9 +44,12 @@ Public Sub showCommonWarnMsg(errorCode As String, row As Integer, col As Integer
         '発行形態が正しくない場合
         Case "E0006"
             errorMsg = errorStr.E0006 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
-          '屋号が正しくない場合
+        '屋号が正しくない場合
         Case "E0007"
             errorMsg = errorStr.E0007 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        '書店会社IDが正しくない
+        Case "E0008"
+            errorMsg = errorStr.E0008 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
             
     End Select
     
