@@ -340,6 +340,36 @@ Private Function zipCodeCheck(row As Integer, col As Integer) As String
     End If
 End Function
 
+'‘“X‰ïĞID‚ğŠm”F
+'25•¶šˆÈ“àA”¼Šp‘å•¶š‰p”šA“ª•¶š‚Í”¼Šp‘å•¶š‰pš
+Public Function checkStoreCompanyID(row As Integer, col As Integer) As Object
+    
+    Dim targetResult As InputResult
+    Set targetResult = New InputResult
+    
+    targetResult.setRow = row
+    targetResult.setCol = col
+    
+    Dim targetStr As String
+    targetStr = Cells(row, col).Value
+    
+    '‘SŠp‚©‚Â‰p”š‚Å‚Í‚È‚¢‚©‚Â25•¶š‚ğ’´‚¦‚½ê‡
+    If hasZenkaku(targetStr) Or Len(findJapanese(targetStr)) > 0 Or Len(targetStr) > 25 Then
+        targetResult.setResult = "E0008"
+        Set checkStoreCompanyID = targetResult
+        Exit Function
+    '‘å•¶š‰p”š‚©‚Â“ª•¶š‚ª‘å•¶š‚ª‚È‚¢ê‡
+    ElseIf Len(checkNarrowUpperCharNum(targetStr)) > 0 Or Len(checkUpperChar(Left(targetStr, 1))) > 0 Then
+        targetResult.setResult = "E0008"
+        Set checkStoreCompanyID = targetResult
+        Exit Function
+    End If
+    
+     '³íˆ—
+    targetResult.setResult = "OK"
+    Set checkStoreCompanyID = targetResult
+End Function
+
 Private Sub Class_Terminate()
     Set commonStr = Nothing
     Set errorStr = Nothing
