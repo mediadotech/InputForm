@@ -17,7 +17,7 @@ End Sub
 
 '必須入力警告
 Public Sub showReqMsg(row As Integer, col As Integer)
-    msgBox errorStr.E0000 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col, vbCritical
+    msgBox errorStr.ET000 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col, vbCritical
 End Sub
 
 '警告メッセージ
@@ -27,29 +27,37 @@ Public Sub showCommonWarnMsg(errorCode As String, row As Integer, col As Integer
     
     Select Case errorCode
         '全角カタカナではない場合
-        Case "E0001"
-            errorMsg = errorStr.E0001 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        Case "ET001"
+            errorMsg = errorStr.ET001 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
         'ハイフン（-）込みの半角数字ではない場合
-        Case "E0002"
-            errorMsg = errorStr.E0002 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        Case "ET002"
+            errorMsg = errorStr.ET002 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
         '住所区分が正しくない場合
-        Case "E0003"
-            errorMsg = errorStr.E0003 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        Case "ET003"
+            errorMsg = errorStr.ET003 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
         '郵便番号が正しくない場合
-        Case "E0004"
-            errorMsg = errorStr.E0004 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        Case "ET004"
+            errorMsg = errorStr.ET004 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
         'メールアドレスが正しくない場合
-        Case "E0005"
-            errorMsg = errorStr.E0005 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        Case "ET005"
+            errorMsg = errorStr.ET005 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
         '発行形態が正しくない場合
-        Case "E0006"
-            errorMsg = errorStr.E0006 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        Case "ET006"
+            errorMsg = errorStr.ET006 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
         '屋号が正しくない場合
-        Case "E0007"
-            errorMsg = errorStr.E0007 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        Case "ET007"
+            errorMsg = errorStr.ET007 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
         '書店会社IDが正しくない
-        Case "E0008"
-            errorMsg = errorStr.E0008 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        Case "ET008"
+            errorMsg = errorStr.ET008 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+         'サービス開始日が正しくない
+        Case "ET009"
+            errorMsg = errorStr.ET009 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+         'サービス終了日が正しくない
+        Case "ET010"
+            errorMsg = errorStr.ET010 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        Case "ET011"
+            errorMsg = errorStr.ET011 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
             
     End Select
     
