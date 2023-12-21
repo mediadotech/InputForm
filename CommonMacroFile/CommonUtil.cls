@@ -18,8 +18,8 @@ Private Sub Class_Initialize()
 End Sub
 
 '全角確認
-Public Function hasZenkaku(s As String) As Boolean
-  If Len(s) <> LenB(StrConv(s, vbFromUnicode)) Then
+Public Function hasZenkaku(S As String) As Boolean
+  If Len(S) <> LenB(StrConv(S, vbFromUnicode)) Then
     hasZenkaku = True
   Else
     hasZenkaku = False
@@ -183,6 +183,11 @@ Public Function findSummitGroupName(str As String) As Boolean
     findSummitGroupName = commonStr.getSummitGroupNameList.Exists(str)
 End Function
     
+'取り扱いファイル形式確認
+Public Function findServiceFileType(str As String) As Boolean
+    findServiceFileType = commonStr.getServiceFileTypeList.Exists(str)
+End Function
+
 '全角カタカナ確認
 Public Function checkWideKana(row As Integer, col As Integer) As String
     checkWideKana = "OK"
@@ -190,7 +195,7 @@ Public Function checkWideKana(row As Integer, col As Integer) As String
     targetStr = Cells(row, col).Value
     '半角かつカタカナではない
     If Not hasZenkaku(targetStr) Or Len(checkKatakana(targetStr)) > 0 Then
-        checkWideKana = "E0001"
+        checkWideKana = "ET001"
         Exit Function
     End If
 End Function
@@ -201,7 +206,7 @@ Public Function checkBusinessName(row As Integer, col As Integer) As String
     Dim businessName As String
     businessName = Cells(row, col).Value
     If Not findBusinessName(businessName) Then
-        checkBusinessName = "E0007"
+        checkBusinessName = "ET007"
         Exit Function
     End If
 End Function
@@ -213,7 +218,7 @@ Public Function telNumCheck(row As Integer, col As Integer) As String
     targetStr = Cells(row, col).Value
     '電話番号いがに形式である
     If Len(checkTelNum(targetStr)) > 0 Then
-        telNumCheck = "E0002"
+        telNumCheck = "ET002"
         Exit Function
     End If
 End Function
@@ -225,7 +230,7 @@ Public Function checkMailAdressList(row As Integer, col As Integer) As String
     targetStr = Cells(row, col).Value
     '全角文字が含まれている
     If hasZenkaku(targetStr) Then
-        checkMailAdressList = "E0005"
+        checkMailAdressList = "ET005"
         Exit Function
     End If
     If InStr(targetStr, ",") Then
@@ -234,13 +239,13 @@ Public Function checkMailAdressList(row As Integer, col As Integer) As String
         mailAdressList = Split(targetStr, ",")
         For i = LBound(mailAdressList) To UBound(mailAdressList)
             If Not checkMailAdess(mailAdressList(i)) Then
-                checkMailAdressList = "E0005"
+                checkMailAdressList = "ET005"
                 Exit Function
             End If
         Next i
     Else
          If Not checkMailAdess(targetStr) Then
-            checkMailAdressList = "E0005"
+            checkMailAdressList = "ET005"
             Exit Function
         End If
     End If
@@ -260,13 +265,13 @@ Public Function checkPublishTypeList(row As Integer, col As Integer) As String
             Dim listStr As String
             listStr = publishTypeList(i)
             If Not findPublishType(listStr) Then
-                checkPublishTypeList = "E0006"
+                checkPublishTypeList = "ET006"
                 Exit Function
             End If
         Next i
     Else
          If Not findPublishType(targetStr) Then
-            checkPublishTypeList = "E0006"
+            checkPublishTypeList = "ET006"
             Exit Function
         End If
     End If
@@ -299,7 +304,7 @@ Public Function addressDivisionCheck(row As Integer, col As Integer) As Object
     targetResult.setCol = adressDivision
     targetResult.setResult = checkInputFlg(targetRow, adressDivision)
     If Not targetResult.result = "OK" Then
-        targetResult.setResult = "E0003"
+        targetResult.setResult = "ET003"
         Set addressDivisionCheck = targetResult
         Exit Function
     End If
@@ -335,7 +340,7 @@ Private Function zipCodeCheck(row As Integer, col As Integer) As String
     targetStr = Cells(row, col).Value
     '半角数字ではないかつ7文字ではない
     If Len(checkZipCode(targetStr)) > 0 Or Not Len(targetStr) = 7 Then
-        zipCodeCheck = "E0004"
+        zipCodeCheck = "ET004"
         Exit Function
     End If
 End Function
@@ -355,12 +360,12 @@ Public Function checkStoreCompanyID(row As Integer, col As Integer) As Object
     
     '全角かつ英数字ではないかつ25文字を超えた場合
     If hasZenkaku(targetStr) Or Len(findJapanese(targetStr)) > 0 Or Len(targetStr) > 25 Then
-        targetResult.setResult = "E0008"
+        targetResult.setResult = "ET008"
         Set checkStoreCompanyID = targetResult
         Exit Function
     '大文字英数字かつ頭文字が大文字がない場合
     ElseIf Len(checkNarrowUpperCharNum(targetStr)) > 0 Or Len(checkUpperChar(Left(targetStr, 1))) > 0 Then
-        targetResult.setResult = "E0008"
+        targetResult.setResult = "ET008"
         Set checkStoreCompanyID = targetResult
         Exit Function
     End If
@@ -368,6 +373,71 @@ Public Function checkStoreCompanyID(row As Integer, col As Integer) As Object
      '正常処理
     targetResult.setResult = "OK"
     Set checkStoreCompanyID = targetResult
+End Function
+
+'日付形式を確認する
+Public Function checkDate(row As Integer, col As Integer) As Object
+
+    Dim targetResult As InputResult
+    Set targetResult = New InputResult
+    
+    targetResult.setRow = row
+    
+    Dim startDateCol As Integer
+    Dim endDateCol As Integer
+    
+    startDateCol = col
+    endDateCol = startDateCol + 1
+    
+    
+    'サービス開始日
+    targetResult.setCol = startDateCol
+    Dim startDate As String
+    startDate = Cells(row, startDateCol).Value
+    '半角数字ではないかつ日付の形式ではない
+    If hasZenkaku(startDate) Or Not IsDate(startDate) Or Not checkDateForm(startDate) Then
+        targetResult.setResult = "ET009"
+        Set checkDate = targetResult
+        Exit Function
+    End If
+    
+    'サービス終了日が入力されてる場合
+    If IsEmpty(Cells(row, endDateCol).Value) = False Then
+        targetResult.setCol = endDateCol
+        Dim endDate As String
+        endDate = Cells(row, endDateCol).Value
+        '半角数字ではないかつ日付の形式ではない
+        If hasZenkaku(endDate) Or Not IsDate(endDate) Or Not checkDateForm(endDate) Then
+            targetResult.setResult = "ET010"
+            Set checkDate = targetResult
+            Exit Function
+        End If
+        
+        'サービス終了日がサービス開始日より前
+        If CLng(Replace(startDate, "/", "")) > CLng(Replace(endDate, "/", "")) Then
+            targetResult.setResult = "ET011"
+            Set checkDate = targetResult
+            Exit Function
+        End If
+    End If
+    
+    targetResult.setResult = "OK"
+    Set checkDate = targetResult
+    
+End Function
+
+'正規表現で日付の形式を確認する
+Private Function checkDateForm(str As String) As Boolean
+    '正規表現クラスオブジェクト
+    Dim reg
+    Set reg = CreateObject("VBScript.RegExp")
+    '日付形式の正規表現
+    reg.Pattern = "\d{4}/\d{2}/\d{2}"
+    '文字列の最後まで検索する
+    reg.Global = True
+    '指定セルの半角数字を空文字に置き換える
+    checkDateForm = reg.Test(str)
+    Set reg = Nothing
 End Function
 
 Private Sub Class_Terminate()

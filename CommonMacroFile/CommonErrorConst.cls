@@ -11,24 +11,28 @@ Option Explicit
 
 '<‹¤’Ê>
 '•K{€–Ú
-Private Const E0000_MSG As String = "•K{€–Ú‚ª“ü—Í‚³‚ê‚Ä‚È‚¢‚Å‚·"
+Private Const ET000_MSG As String = "•K{€–Ú‚ª“ü—Í‚³‚ê‚Ä‚È‚¢‚Å‚·"
 'ƒJƒ^ƒJƒi“ü—Í
-Private Const E0001_MSG As String = "‘SŠpƒJƒ^ƒJƒi“ü—Í‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"
+Private Const ET001_MSG As String = "‘SŠpƒJƒ^ƒJƒi“ü—Í‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"
 '“d˜b”Ô†
-Private Const E0002_MSG As String = "“d˜b”Ô†‚ª³‚µ‚­‚È‚¢‚Å‚·"
+Private Const ET002_MSG As String = "“d˜b”Ô†‚ª³‚µ‚­‚È‚¢‚Å‚·"
 'ZŠ‹æ•ª
-Private Const E0003_MSG As String = "ZŠ‹æ•ª‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA1i‘“àjA2i‘ŠOj"
+Private Const ET003_MSG As String = "ZŠ‹æ•ª‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA1i‘“àjA2i‘ŠOj"
 '—X•Ö”Ô†
-Private Const E0004_MSG As String = "—X•Ö”Ô†‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA7•¶š"
+Private Const ET004_MSG As String = "—X•Ö”Ô†‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA7•¶š"
 'ƒ[ƒ‹ƒAƒhƒŒƒX
-Private Const E0005_MSG As String = "ƒ[ƒ‹ƒAƒhƒŒƒX‚ª³‚µ‚­‚È‚¢‚Å‚·"
+Private Const ET005_MSG As String = "ƒ[ƒ‹ƒAƒhƒŒƒX‚ª³‚µ‚­‚È‚¢‚Å‚·"
 '”­sŒ`‘Ô
-Private Const E0006_MSG As String = "”­sŒ`‘Ô‚ª³‚µ‚­‚È‚¢‚Å‚·"
+Private Const ET006_MSG As String = "”­sŒ`‘Ô‚ª³‚µ‚­‚È‚¢‚Å‚·"
 '‰®†
-Private Const E0007_MSG As String = "‰®†‚ª³‚µ‚­‚È‚è‚Ü‚¹‚ñ"
+Private Const ET007_MSG As String = "‰®†‚ª³‚µ‚­‚È‚è‚Ü‚¹‚ñ"
 '‘“X‰ïĞID
-Private Const E0008_MSG As String = "‘“X‰ïĞIDƒh‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "25•¶šˆÈ“àA”¼Šp‘å•¶š‰p”šA“ª•¶š‚Í”¼Šp‘å•¶š‰pš"
-
+Private Const ET008_MSG As String = "‘“X‰ïĞIDƒh‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "25•¶šˆÈ“àA”¼Šp‘å•¶š‰p”šA“ª•¶š‚Í”¼Šp‘å•¶š‰pš"
+'ƒT[ƒrƒXŠJn“ú
+Private Const ET009_MSG As String = "ƒT[ƒrƒXŠJn“ú‚ª³‚µ‚­‚È‚è‚Ü‚¹‚ñ" & vbCrLf & "yyyy/mm/dd"
+'ƒT[ƒrƒXI—¹“ú
+Private Const ET010_MSG As String = "ƒT[ƒrƒXI—¹“ú‚ª³‚µ‚­‚È‚è‚Ü‚¹‚ñ" & vbCrLf & "yyyy/mm/dd"
+Private Const ET011_MSG As String = "ƒT[ƒrƒXŠJn“ú‚æ‚è‘O‚Ì“ú•t‚Í“ü—Í‚Å‚«‚Ü‚¹‚ñ"
 
 '<x•¥æ“o˜^>
 'x•¥æƒR[ƒh
@@ -54,11 +58,6 @@ Private Const E0204_MSG As String = "æ‚èˆµ‚¢”­sŒ`‘Ô‚É“ü—Í‚µ‚½Œ`‘Ô‚¾‚¯“ü—Ío—ˆ‚
 Private Const E0205_MSG As String = "æ‚èˆµ‚¢”­sŒ`‘ÔA–ñ”Ì”„‰Â”\”­sŒ`‘Ô‚µ“ü—Í‚µ‚½Œ`‘Ô‚¾‚¯“ü—Ío—ˆ‚Ü‚·"
 '“üeƒOƒ‹[ƒv
 Private Const E0206_MSG As String = "“üeƒOƒ‹[ƒv‚ª³‚µ‚­‚È‚è‚Ü‚¹‚ñ"
-'ƒT[ƒrƒXŠJn“ú
-Private Const E0207_MSG As String = "ƒT[ƒrƒXŠJn“ú‚ª³‚µ‚­‚È‚è‚Ü‚¹‚ñ" & vbCrLf & "yyyy/mm/dd"
-'ƒT[ƒrƒXI—¹“ú
-Private Const E0208_MSG As String = "ƒT[ƒrƒXI—¹“ú‚ª³‚µ‚­‚È‚è‚Ü‚¹‚ñ" & vbCrLf & "yyyy/mm/dd"
-Private Const E0209_MSG As String = "ƒT[ƒrƒXŠJn“ú‚æ‚è‘O‚Ì“ú•t‚Í“ü—Í‚Å‚«‚Ü‚¹‚ñ"
 
 '<‘“X‰ïĞî•ñ“o˜^>
 '‘“X‰ïĞID
@@ -78,43 +77,78 @@ Private Const E0400_MSG As String = "‘“XƒOƒ‹[ƒvî•ñ‚Ì€–Ú‚Ü‚½‘“X‰ïĞID‚ª“ü—Í‚
 '‘“XƒOƒ‹[ƒvID
 Private Const E0401_MSG As String = "‘“XƒOƒ‹[ƒvID‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "25•¶šˆÈ“àA”¼Šp‰p”š "
 
+'<‘“Xî•ñ“o˜^>
+'‘“XƒOƒ‹[ƒv–¼
+Private Const E0500_MSG As String = "‘“Xî•ñ‚Ì€–Ú‚Ü‚½‘“XƒOƒ‹[ƒv–¼‚ª“ü—Í‚³‚ê‚Ä‚È‚¢‚Å‚·"
+'‘“XID
+Private Const E0501_MSG As String = "‘“XID‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "4•¶šˆÈã8•¶šˆÈ‰ºA”¼Šp‰p”š‹L†(‹L†‚ÍƒAƒ“ƒ_[ƒXƒRƒA[_]‚Ì‚İ)"
+'æ‚èˆµ‚¢ƒtƒ@ƒCƒ‹Œ`®
+Private Const E0502_MSG As String = "æ‚èˆµ‚¢ƒtƒ@ƒCƒ‹Œ`®‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "Ú‚µ‚¢“à—e‚Í5|2u“ü—ÍƒR[ƒhˆê——v‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B"
+'æ‚èˆµ‚¢ƒtƒ@ƒCƒ‹Œ`®
+Private Const E0503_MSG As String = "¬lw’èƒRƒ“ƒeƒ“ƒcæ‚èˆµ‚¢‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA1i”ÛjA2i‰Âj"
+'”„ã“o˜^Œ`®
+Private Const E0504_MSG As String = "”„ã“o˜^Œ`®‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "Ú‚µ‚¢“à—e‚Í5|2u“ü—ÍƒR[ƒhˆê——v‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B"
+'‘“X“Æ©‰¿Ši‹–‰Â
+Private Const E0505_MSG As String = "‘“X“Æ©‰¿Ši‹–‰Â‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA1i”ÛjA2i‰Âj"
+'—\–ñæsŒöŠJ
+Private Const E0506_MSG As String = "—\–ñæsŒöŠJ‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA1i”ÛjA2i‰Âj"
+'‘“X—áŠO—¿—¦“o˜^
+Private Const E0507_MSG As String = "‘“X—áŠO—¿—¦“o˜^‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA1i•K{jA2i”CˆÓj"
+'’ •[¶¬ƒ‹[ƒ‹
+Private Const E0508_MSG As String = "’ •[¶¬ƒ‹[ƒ‹‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA1i’ÊíjA2i‘Ûj"
+'Ú‘±ƒAƒJƒEƒ“ƒg
+Private Const E0509_MSG As String = "Ú‘±ƒAƒJƒEƒ“ƒg‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "6•¶šˆÈã25•¶šˆÈ‰ºA”¼Šp‰p”š‹L†(‹L†‚ÍƒAƒ“ƒ_[ƒXƒRƒA[_]‚Ì‚İ)"
+'Ú‘±ƒpƒXƒ[ƒh
+Private Const E0510_MSG As String = "Ú‘±ƒpƒXƒ[ƒh‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "6•¶šˆÈã25•¶šˆÈ‰º"
+
 '‹¤’Ê
-Public Property Get E0000() As String
-    E0000 = E0000_MSG
+Public Property Get ET000() As String
+    ET000 = ET000_MSG
 End Property
 
-Public Property Get E0001() As String
-    E0001 = E0001_MSG
+Public Property Get ET001() As String
+    ET001 = ET001_MSG
 End Property
 
-Public Property Get E0002() As String
-    E0002 = E0002_MSG
+Public Property Get ET002() As String
+    ET002 = ET002_MSG
 End Property
 
-Public Property Get E0003() As String
-    E0003 = E0003_MSG
+Public Property Get ET003() As String
+    ET003 = ET003_MSG
 End Property
 
-Public Property Get E0004() As String
-    E0004 = E0004_MSG
+Public Property Get ET004() As String
+    ET004 = ET004_MSG
 End Property
 
-Public Property Get E0005() As String
-    E0005 = E0005_MSG
+Public Property Get ET005() As String
+    ET005 = ET005_MSG
 End Property
 
-Public Property Get E0006() As String
-    E0006 = E0006_MSG
+Public Property Get ET006() As String
+    ET006 = ET006_MSG
 End Property
 
-Public Property Get E0007() As String
-    E0007 = E0007_MSG
+Public Property Get ET007() As String
+    ET007 = ET007_MSG
 End Property
 
-Public Property Get E0008() As String
-    E0008 = E0008_MSG
+Public Property Get ET008() As String
+    ET008 = ET008_MSG
 End Property
 
+Public Property Get ET009() As String
+    ET009 = ET009_MSG
+End Property
+
+Public Property Get ET010() As String
+    ET010 = ET010_MSG
+End Property
+
+Public Property Get ET011() As String
+    ET011 = ET011_MSG
+End Property
 
 'x•¥æ“o˜^
 Public Property Get E0100() As String
@@ -140,7 +174,6 @@ End Property
 Public Property Get E0105() As String
     E0105 = E0105_MSG
 End Property
-
 
 'o”ÅĞ“o˜^
 Public Property Get E0200() As String
@@ -169,18 +202,6 @@ End Property
 
 Public Property Get E0206() As String
     E0206 = E0206_MSG
-End Property
-
-Public Property Get E0207() As String
-    E0207 = E0207_MSG
-End Property
-
-Public Property Get E0208() As String
-    E0208 = E0208_MSG
-End Property
-
-Public Property Get E0209() As String
-    E0209 = E0209_MSG
 End Property
 
 '‘“X‰ïĞî•ñ“o˜^
@@ -213,3 +234,47 @@ Public Property Get E0401() As String
     E0401 = E0401_MSG
 End Property
     
+'‘“Xî•ñ“o˜^
+Public Property Get E0500() As String
+    E0500 = E0500_MSG
+End Property
+
+Public Property Get E0501() As String
+    E0501 = E0501_MSG
+End Property
+
+Public Property Get E0502() As String
+    E0502 = E0502_MSG
+End Property
+
+Public Property Get E0503() As String
+    E0503 = E0503_MSG
+End Property
+
+Public Property Get E0504() As String
+    E0504 = E0504_MSG
+End Property
+
+Public Property Get E0505() As String
+    E0505 = E0505_MSG
+End Property
+
+Public Property Get E0506() As String
+    E0506 = E0506_MSG
+End Property
+
+Public Property Get E0507() As String
+    E0507 = E0507_MSG
+End Property
+
+Public Property Get E0508() As String
+    E0508 = E0508_MSG
+End Property
+
+Public Property Get E0509() As String
+    E0509 = E0509_MSG
+End Property
+
+Public Property Get E0510() As String
+    E0510 = E0510_MSG
+End Property
