@@ -83,11 +83,11 @@ Private Const E0500_MSG As String = "‘“Xî•ñ‚Ì€–Ú‚Ü‚½‘“XƒOƒ‹[ƒv–¼‚ª“ü—Í‚³‚ê‚
 '‘“XID
 Private Const E0501_MSG As String = "‘“XID‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "4•¶ŽšˆÈã8•¶ŽšˆÈ‰ºA”¼Šp‰p”Žš‹L†(‹L†‚ÍƒAƒ“ƒ_[ƒXƒRƒA[_]‚Ì‚Ý)"
 'Žæ‚èˆµ‚¢ƒtƒ@ƒCƒ‹Œ`Ž®
-Private Const E0502_MSG As String = "Žæ‚èˆµ‚¢ƒtƒ@ƒCƒ‹Œ`Ž®‚ª³‚µ‚­‚È‚¢‚Å‚·"
+Private Const E0502_MSG As String = "Žæ‚èˆµ‚¢ƒtƒ@ƒCƒ‹Œ`Ž®‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "Ú‚µ‚¢“à—e‚Í5|2uƒR[ƒhˆê——v‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B"
 'Žæ‚èˆµ‚¢ƒtƒ@ƒCƒ‹Œ`Ž®
 Private Const E0503_MSG As String = "¬lŽw’èƒRƒ“ƒeƒ“ƒcŽæ‚èˆµ‚¢‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”ŽšA1i”ÛjA2i‰Âj"
 '”„ã“o˜^Œ`Ž®
-Private Const E0504_MSG As String = "”„ã“o˜^Œ`Ž®‚ª³‚µ‚­‚È‚¢‚Å‚·"
+Private Const E0504_MSG As String = "”„ã“o˜^Œ`Ž®‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "Ú‚µ‚¢“à—e‚Í5|2uƒR[ƒhˆê——v‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B"
 '‘“X“ÆŽ©‰¿Ši‹–‰Â
 Private Const E0505_MSG As String = "‘“X“ÆŽ©‰¿Ši‹–‰Â‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”ŽšA1i”ÛjA2i‰Âj"
 '—\–ñæsŒöŠJ

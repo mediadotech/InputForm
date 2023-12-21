@@ -14,7 +14,6 @@ Dim publishTypeList As Object
 Dim agencyCompanyNameList As Object
 Dim summitGroupNameList As Object
 Dim serviceFileTypeList As Object
-Dim salesRegistrationFormatList As Object
 
 '屋号(Trade name)
 Private Const TN000_MSG As String = "なし"
@@ -129,13 +128,6 @@ Private Const SFT034_MSG As String = "800001"
 'プリントオンデマンド（700001）
 Private Const SFT035_MSG As String = "700001"
 
-'売上登録形式(Sales registration format)
-Private Const SRF001_MSG As String = "売上API"
-Private Const SRF002_MSG As String = "日次売上"
-Private Const SRF003_MSG As String = "外部売上"
-Private Const SRF004_MSG As String = "日次売上(合算)"
-
-
 Private Sub Class_Initialize()
     
     Set businessNameList = CreateObject("Scripting.Dictionary")
@@ -143,8 +135,6 @@ Private Sub Class_Initialize()
     Set agencyCompanyNameList = CreateObject("Scripting.Dictionary")
     Set summitGroupNameList = CreateObject("Scripting.Dictionary")
     Set serviceFileTypeList = CreateObject("Scripting.Dictionary")
-    Set salesRegistrationFormatList = CreateObject("Scripting.Dictionary")
-       
    
     '屋号
     businessNameList.Add TN000_MSG, TN000_MSG
@@ -223,13 +213,7 @@ Private Sub Class_Initialize()
     serviceFileTypeList.Add SFT033_MSG, SFT033_MSG
     serviceFileTypeList.Add SFT034_MSG, SFT034_MSG
     serviceFileTypeList.Add SFT035_MSG, SFT035_MSG
-    
-    '売上登録形式
-    salesRegistrationFormatList.Add SRF001_MSG, SRF001_MSG
-    salesRegistrationFormatList.Add SRF002_MSG, SRF002_MSG
-    salesRegistrationFormatList.Add SRF003_MSG, SRF003_MSG
-    salesRegistrationFormatList.Add SRF004_MSG, SRF004_MSG
-    
+ 
 End Sub
 
 '屋号のリストを取得
@@ -269,26 +253,11 @@ Public Property Get getServiceFileTypeList() As Object
         
 End Property
 
-'売上登録形式
-Public Property Get getSalesRegistrationFormatList() As Object
-
-       Set getSalesRegistrationFormatList = salesRegistrationFormatList
-        
-End Property
-
-'日次売上 (合算)を取得
-Public Property Get getDailySalesTotal() As String
-
-      getDailySalesTotal = SRF004_MSG
-        
-End Property
-
 Private Sub Class_Terminate()
     Set businessNameList = Nothing
     Set publishTypeList = Nothing
     Set agencyCompanyNameList = Nothing
     Set summitGroupNameList = Nothing
     Set serviceFileTypeList = Nothing
-    Set salesRegistrationFormatList = Nothing
 End Sub
 

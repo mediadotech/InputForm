@@ -188,20 +188,6 @@ Public Function findServiceFileType(str As String) As Boolean
     findServiceFileType = commonStr.getServiceFileTypeList.Exists(str)
 End Function
 
-'売上登録形式確認
-Public Function findSalesRegistrarionFormat(str As String) As Boolean
-    findSalesRegistrarionFormat = commonStr.getSalesRegistrationFormatList.Exists(str)
-End Function
-
-'日次売上 (合算)か確認
-Public Function isDailySalsesTotal(str As String) As Boolean
-    If commonStr.getDailySalesTotal = str Then
-        isDailySalsesTotal = True
-    Else
-        isDailySalsesTotal = False
-    End If
-End Function
-
 '全角カタカナ確認
 Public Function checkWideKana(row As Integer, col As Integer) As String
     checkWideKana = "OK"
