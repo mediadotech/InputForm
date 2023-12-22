@@ -58,7 +58,9 @@ Public Sub showCommonWarnMsg(errorCode As String, row As Integer, col As Integer
             errorMsg = errorStr.ET010 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
         Case "ET011"
             errorMsg = errorStr.ET011 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
-            
+        '書店ID
+        Case "ET012"
+            errorMsg = errorStr.ET012 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
     End Select
     
     msgBox errorMsg, vbExclamation

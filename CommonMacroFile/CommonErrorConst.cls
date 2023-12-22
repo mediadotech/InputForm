@@ -33,6 +33,8 @@ Private Const ET009_MSG As String = "サービス開始日が正しくなりません" & vbCrLf 
 'サービス終了日
 Private Const ET010_MSG As String = "サービス終了日が正しくなりません" & vbCrLf & "yyyy/mm/dd"
 Private Const ET011_MSG As String = "サービス開始日より前の日付は入力できません"
+'書店ID
+Private Const ET012_MSG As String = "書店IDが正しくないです" & vbCrLf & "4文字以上8文字以下、半角英数字記号(記号はアンダースコア[_]のみ)"
 
 '<支払先登録>
 '支払先コード
@@ -80,26 +82,24 @@ Private Const E0401_MSG As String = "書店グループIDが正しくないです" & vbCrLf & 
 '<書店情報登録>
 '書店グループ名
 Private Const E0500_MSG As String = "書店情報の項目また書店グループ名が入力されてないです"
-'書店ID
-Private Const E0501_MSG As String = "書店IDが正しくないです" & vbCrLf & "4文字以上8文字以下、半角英数字記号(記号はアンダースコア[_]のみ)"
 '取り扱いファイル形式
-Private Const E0502_MSG As String = "取り扱いファイル形式が正しくないです" & vbCrLf & "詳しい内容は5－2「入力コード一覧」を参照してください。"
+Private Const E0501_MSG As String = "取り扱いファイル形式が正しくないです" & vbCrLf & "詳しい内容は5－2「入力コード一覧」を参照してください。"
 '取り扱いファイル形式
-Private Const E0503_MSG As String = "成人指定コンテンツ取り扱いが正しくないです" & vbCrLf & "半角数字、1（否）、2（可）"
+Private Const E0502_MSG As String = "成人指定コンテンツ取り扱いが正しくないです" & vbCrLf & "半角数字、1（否）、2（可）"
 '売上登録形式
-Private Const E0504_MSG As String = "売上登録形式が正しくないです" & vbCrLf & "詳しい内容は5－2「入力コード一覧」を参照してください。"
+Private Const E0503_MSG As String = "売上登録形式が正しくないです" & vbCrLf & "詳しい内容は5－2「入力コード一覧」を参照してください。"
 '書店独自価格許可
-Private Const E0505_MSG As String = "書店独自価格許可が正しくないです" & vbCrLf & "半角数字、1（否）、2（可）"
+Private Const E0504_MSG As String = "書店独自価格許可が正しくないです" & vbCrLf & "半角数字、1（否）、2（可）"
 '予約先行公開
-Private Const E0506_MSG As String = "予約先行公開が正しくないです" & vbCrLf & "半角数字、1（否）、2（可）"
+Private Const E0505_MSG As String = "予約先行公開が正しくないです" & vbCrLf & "半角数字、1（否）、2（可）"
 '書店例外料率登録
-Private Const E0507_MSG As String = "書店例外料率登録が正しくないです" & vbCrLf & "半角数字、1（必須）、2（任意）"
+Private Const E0506_MSG As String = "書店例外料率登録が正しくないです" & vbCrLf & "半角数字、1（必須）、2（任意）"
 '帳票生成ルール
-Private Const E0508_MSG As String = "帳票生成ルールが正しくないです" & vbCrLf & "半角数字、1（通常）、2（国際）"
+Private Const E0507_MSG As String = "帳票生成ルールが正しくないです" & vbCrLf & "半角数字、1（通常）、2（国際）"
 '接続アカウント
-Private Const E0509_MSG As String = "接続アカウントが正しくないです" & vbCrLf & "6文字以上25文字以下、半角英数字記号(記号はアンダースコア[_]のみ)"
+Private Const E0508_MSG As String = "接続アカウントが正しくないです" & vbCrLf & "6文字以上25文字以下、半角英数字記号(記号はアンダースコア[_]のみ)"
 '接続パスワード
-Private Const E0510_MSG As String = "接続パスワードが正しくないです" & vbCrLf & "6文字以上25文字以下"
+Private Const E0509_MSG As String = "接続パスワードが正しくないです" & vbCrLf & "6文字以上25文字以下"
 
 '共通
 Public Property Get ET000() As String
@@ -148,6 +148,10 @@ End Property
 
 Public Property Get ET011() As String
     ET011 = ET011_MSG
+End Property
+
+Public Property Get ET012() As String
+    ET012 = ET012_MSG
 End Property
 
 '支払先登録
@@ -273,8 +277,4 @@ End Property
 
 Public Property Get E0509() As String
     E0509 = E0509_MSG
-End Property
-
-Public Property Get E0510() As String
-    E0510 = E0510_MSG
 End Property
