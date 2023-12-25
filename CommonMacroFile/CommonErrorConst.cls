@@ -101,6 +101,14 @@ Private Const E0508_MSG As String = "接続アカウントが正しくないです" & vbCrLf & 
 '接続パスワード
 Private Const E0509_MSG As String = "接続パスワードが正しくないです" & vbCrLf & "6文字以上25文字以下"
 
+'<公開承認_書店>
+'書店グループ名
+Private Const E0700_MSG As String = "書店IDが入力されてないです"
+
+'<接続先書店設定>
+'書店グループ名
+Private Const E0800_MSG As String = "接続先書店設定の項目また出版社名が入力されてないです"
+
 '共通
 Public Property Get ET000() As String
     ET000 = ET000_MSG
@@ -278,3 +286,15 @@ End Property
 Public Property Get E0509() As String
     E0509 = E0509_MSG
 End Property
+
+
+'<公開承認_書店>
+Public Property Get E0700() As String
+    E0700 = E0700_MSG
+End Property
+
+'<接続先書店設定>
+Public Property Get E0800() As String
+    E0800 = E0800_MSG
+End Property
+
