@@ -109,6 +109,20 @@ Private Const E0700_MSG As String = "書店IDが入力されてないです"
 '書店グループ名
 Private Const E0800_MSG As String = "接続先書店設定の項目また出版社名が入力されてないです"
 
+'<料率の設定>
+'例外料率フラグ
+Private Const E0900_MSG As String = "料率の項目また例外料率フラグが入力されてないです"
+Private Const E0901_MSG As String = "例外料率フラグが正しくないです" & vbCrLf & "半角数字、0（基本料率）、1（例外料率）"
+'出版者の発行形態
+Private Const E0902_MSG As String = "出版者の発行形態が正しくないです"
+'書店の発行形態
+Private Const E0903_MSG As String = "書店の発行形態が正しくないです"
+'料率
+Private Const E0904_MSG As String = "料率が正しくないです" & vbCrLf & "0~100の半角数字,小数点以下2桁まで"
+'料率期間
+Private Const E0905_MSG As String = "料率期間が正しくないです" & vbCrLf & "yyyy/mm"
+
+
 '共通
 Public Property Get ET000() As String
     ET000 = ET000_MSG
@@ -298,3 +312,27 @@ Public Property Get E0800() As String
     E0800 = E0800_MSG
 End Property
 
+'<料率の設定>
+Public Property Get E0900() As String
+    E0900 = E0900_MSG
+End Property
+
+Public Property Get E0901() As String
+    E0901 = E0901_MSG
+End Property
+
+Public Property Get E0902() As String
+    E0902 = E0902_MSG
+End Property
+
+Public Property Get E0903() As String
+    E0903 = E0903_MSG
+End Property
+
+Public Property Get E0904() As String
+    E0904 = E0904_MSG
+End Property
+
+Public Property Get E0905() As String
+    E0905 = E0905_MSG
+End Property
