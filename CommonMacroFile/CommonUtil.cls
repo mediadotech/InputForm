@@ -46,7 +46,7 @@ Public Function checkNarrowNum(str As String) As String
     Dim reg
     Set reg = CreateObject("VBScript.RegExp")
     '検索条件＝半角数字
-    reg.Pattern = "[0-9]"
+    reg.Pattern = "^[0-9]+$"
     '文字列の最後まで検索する
     reg.Global = True
     '指定セルの半角数字を空文字に置き換える
@@ -455,6 +455,48 @@ Public Function chekStoreGroupID(row As Integer, col As Integer) As String
     
      '正常処理
     chekStoreGroupID = "OK"
+End Function
+
+'書店IDを確認
+'4文字以以上8文字以下、半角英数字記号（_のみ）
+Public Function chekStoreID(row As Integer, col As Integer) As Object
+    Dim targetResult As InputResult
+    Set targetResult = New InputResult
+    
+    targetResult.setRow = row
+    targetResult.setCol = col
+    
+    Dim targetStr As String
+    targetStr = Cells(row, col).Value
+    
+    '全角かつ4文字未満かつ8文字を超える場合
+    If hasZenkaku(targetStr) Or Len(targetStr) < 4 Or Len(targetStr) > 8 Then
+        targetResult.setResult = "ET012"
+        Set chekStoreID = targetResult
+        Exit Function
+        
+    '半角英数字と_がない場合
+     ElseIf Len(chekStoreIdForm(targetStr)) > 0 Then
+        targetResult.setResult = "ET012"
+        Set chekStoreID = targetResult
+        Exit Function
+     End If
+    
+    '正常処理
+     targetResult.setResult = "OK"
+     Set chekStoreID = targetResult
+      
+End Function
+
+Public Function chekStoreIdForm(str As String) As String
+    Dim reg As Object
+    Set reg = CreateObject("VBScript.RegExp")
+    'メールアドレス形式の正規表現
+    reg.Pattern = "[a-zA-Z_0-9]"
+   '文字列の最後まで検索する
+    reg.Global = True
+    chekStoreIdForm = reg.Replace(str, "")
+    Set reg = Nothing
 End Function
 
 Private Sub Class_Terminate()
