@@ -110,9 +110,16 @@ Private Const E0700_MSG As String = "書店IDが入力されてないです"
 Private Const E0800_MSG As String = "接続先書店設定の項目また出版社名が入力されてないです"
 
 '<タイトル種別の設定>
-Private Const E1000_MSG As String = "タイトル種別の設定の項目また書店グループIDが入力されてないです"
+Private Const E1000_MSG As String = "タイトル種別の設定項目また書店グループIDが入力されてないです"
 'タイトル種別ID
 Private Const E1001_MSG As String = "タイトル種別IDが正しくないです" & vbCrLf & "半角英字、TS＋3文字以内"
+
+'<公開日の設定>
+Private Const E1100_MSG As String = "公開日の設定項目また書店IDが入力されてないです"
+'公開自動設定フラグ
+Private Const E1101_MSG As String = "公開自動設定フラグが正しくないです" & vbCrLf & "半角数字、0（しない）、1（する）"
+'公開設定レーティング
+Private Const E1102_MSG As String = "公開設定レーティングが正しくないです" & vbCrLf & "半角数字、1~10、20"
 
 '共通
 Public Property Get ET000() As String
@@ -311,5 +318,18 @@ End Property
 
 Public Property Get E1001() As String
     E1001 = E1001_MSG
+End Property
+
+'<公開日の設定>
+Public Property Get E1100() As String
+    E1100 = E1100_MSG
+End Property
+
+Public Property Get E1101() As String
+    E1101 = E1101_MSG
+End Property
+
+Public Property Get E1102() As String
+    E1102 = E1102_MSG
 End Property
 
