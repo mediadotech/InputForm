@@ -121,6 +121,17 @@ Private Const E1101_MSG As String = "公開自動設定フラグが正しくないです" & vbCrL
 '公開設定レーティング
 Private Const E1102_MSG As String = "公開設定レーティングが正しくないです" & vbCrLf & "半角数字、1~10、20"
 
+'<検証機能>
+Private Const E1300_MSG As String = "検証機能項目またタイトルIDが入力されてないです"
+'タイトルID
+Private Const E1301_MSG As String = "タイトルIDが正しくないです" & vbCrLf & "半角英数字"
+'書誌情報検証
+Private Const E1302_MSG As String = "書誌情報検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
+'サムネイル検証
+Private Const E1303_MSG As String = "サムネイル検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
+'コンテンツファイル検証
+Private Const E1304_MSG As String = "コンテンツファイル検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
+
 '共通
 Public Property Get ET000() As String
     ET000 = ET000_MSG
@@ -177,7 +188,6 @@ End Property
 Public Property Get ET013() As String
     ET013 = ET013_MSG
 End Property
-
 
 '支払先登録
 Public Property Get E0100() As String
@@ -333,3 +343,23 @@ Public Property Get E1102() As String
     E1102 = E1102_MSG
 End Property
 
+'<検証機能>
+Public Property Get E1300() As String
+    E1300 = E1300_MSG
+End Property
+
+Public Property Get E1301() As String
+    E1301 = E1301_MSG
+End Property
+
+Public Property Get E1302() As String
+    E1302 = E1302_MSG
+End Property
+
+Public Property Get E1303() As String
+    E1303 = E1303_MSG
+End Property
+
+Public Property Get E1304() As String
+    E1304 = E1304_MSG
+End Property
