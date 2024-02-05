@@ -37,6 +37,8 @@ Private Const ET011_MSG As String = "サービス開始日より前の日付は入力できません"
 Private Const ET012_MSG As String = "書店IDが正しくないです" & vbCrLf & "4文字以上8文字以下、半角英数字記号(記号はアンダースコア[_]のみ)"
 '書店グループID
 Private Const ET013_MSG As String = "書店グループIDが正しくないです" & vbCrLf & "25文字以内、半角英数字 "
+'タイトルID
+Private Const ET014_MSG As String = "タイトルIDが正しくないです" & vbCrLf & "半角数字"
 
 '<支払先登録>
 '支払先コード
@@ -123,14 +125,12 @@ Private Const E1102_MSG As String = "公開設定レーティングが正しくないです" & vbC
 
 '<検証機能>
 Private Const E1300_MSG As String = "検証機能項目またタイトルIDが入力されてないです"
-'タイトルID
-Private Const E1301_MSG As String = "タイトルIDが正しくないです" & vbCrLf & "半角英数字"
 '書誌情報検証
-Private Const E1302_MSG As String = "書誌情報検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
+Private Const E1301_MSG As String = "書誌情報検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
 'サムネイル検証
-Private Const E1303_MSG As String = "サムネイル検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
+Private Const E1302_MSG As String = "サムネイル検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
 'コンテンツファイル検証
-Private Const E1304_MSG As String = "コンテンツファイル検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
+Private Const E1303_MSG As String = "コンテンツファイル検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
 
 '共通
 Public Property Get ET000() As String
@@ -188,6 +188,11 @@ End Property
 Public Property Get ET013() As String
     ET013 = ET013_MSG
 End Property
+
+Public Property Get ET014() As String
+    ET014 = ET014_MSG
+End Property
+
 
 '支払先登録
 Public Property Get E0100() As String
@@ -358,8 +363,4 @@ End Property
 
 Public Property Get E1303() As String
     E1303 = E1303_MSG
-End Property
-
-Public Property Get E1304() As String
-    E1304 = E1304_MSG
 End Property

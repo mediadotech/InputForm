@@ -499,6 +499,28 @@ Public Function chekStoreIdForm(str As String) As String
     Set reg = Nothing
 End Function
 
+'タイトルID確認
+Public Function chekTitleID(row As Integer, col As Integer) As Object
+
+    Dim targetResult As InputResult
+    Set targetResult = New InputResult
+    
+    targetResult.setRow = row
+    targetResult.setCol = col
+    targetResult.setResult = "OK"
+    
+    Dim targetStr As String
+    targetStr = Cells(row, col).Value
+    
+    '全角かつ数字ではない場合
+    If hasZenkaku(targetStr) Or Len(checkNarrowNum(targetStr)) > 0 Then
+        targetResult.setResult = "ET014"
+    End If
+    
+    Set chekTitleID = targetResult
+    
+End Function
+
 Private Sub Class_Terminate()
     Set commonStr = Nothing
     Set errorStr = Nothing
