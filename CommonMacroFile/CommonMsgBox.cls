@@ -65,6 +65,9 @@ Public Sub showCommonWarnMsg(errorCode As String, row As Integer, col As Integer
        '書店グループIDが正しくない
         Case "ET013"
             errorMsg = errorStr.ET013 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
+        'タイトルIDが正しくない
+        Case "ET014"
+            errorMsg = errorStr.ET014 & vbCrLf & "項目：" & Cells(1, col).Value & vbCrLf & "行：" & row & vbCrLf & "列：" & col
             
     End Select
     
