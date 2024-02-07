@@ -132,6 +132,17 @@ Private Const E1302_MSG As String = "サムネイル検証が正しくないです" & vbCrLf & 
 'コンテンツファイル検証
 Private Const E1303_MSG As String = "コンテンツファイル検証が正しくないです" & vbCrLf & "半角数字、0（NG）、1（OK）"
 
+'<レーティング>
+Private Const E1400_MSG As String = "レーティング設定項目またタイトルIDが入力されてないです"
+'レーティング
+Private Const E1401_MSG As String = "レーティングが正しくないです" & vbCrLf & "半角数字、1~10、20、99(確認中)"
+
+'<公開日自動設定>
+Private Const E1500_MSG As String = "公開日自動設定項目またタイトルIDが入力されてないです"
+'承認ステータス
+Private Const E1501_MSG As String = "承認ステータスが正しくないです" & vbCrLf & "半角数字、1（承認）、2（未設定）、3（保留）"
+
+
 '共通
 Public Property Get ET000() As String
     ET000 = ET000_MSG
@@ -363,4 +374,22 @@ End Property
 
 Public Property Get E1303() As String
     E1303 = E1303_MSG
+End Property
+
+'<レーティング>
+Public Property Get E1400() As String
+    E1400 = E1400_MSG
+End Property
+
+Public Property Get E1401() As String
+    E1401 = E1401_MSG
+End Property
+
+'<公開日自動設定>
+Public Property Get E1500() As String
+    E1500 = E1500_MSG
+End Property
+
+Public Property Get E1501() As String
+    E1501 = E1501_MSG
 End Property
