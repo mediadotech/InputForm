@@ -14,6 +14,7 @@ Dim publishTypeList As Object
 Dim agencyCompanyNameList As Object
 Dim summitGroupNameList As Object
 Dim serviceFileTypeList As Object
+Dim proveStatusList As Object
 
 '屋号(Trade name)
 Private Const TN000_MSG As String = "なし"
@@ -128,6 +129,17 @@ Private Const SFT034_MSG As String = "800001"
 'プリントオンデマンド（700001）
 Private Const SFT035_MSG As String = "700001"
 
+
+'承認ステータス（Prove Status）
+'未設定
+Private Const PS001_MSG As String = "0"
+'承認
+Private Const PS002_MSG As String = "1"
+'保留
+Private Const PS003_MSG As String = "9"
+'削除
+Private Const PS004_MSG As String = "99"
+
 Private Sub Class_Initialize()
     
     Set businessNameList = CreateObject("Scripting.Dictionary")
@@ -135,6 +147,7 @@ Private Sub Class_Initialize()
     Set agencyCompanyNameList = CreateObject("Scripting.Dictionary")
     Set summitGroupNameList = CreateObject("Scripting.Dictionary")
     Set serviceFileTypeList = CreateObject("Scripting.Dictionary")
+    Set proveStatusList = CreateObject("Scripting.Dictionary")
    
     '屋号
     businessNameList.Add TN000_MSG, TN000_MSG
@@ -213,6 +226,12 @@ Private Sub Class_Initialize()
     serviceFileTypeList.Add SFT033_MSG, SFT033_MSG
     serviceFileTypeList.Add SFT034_MSG, SFT034_MSG
     serviceFileTypeList.Add SFT035_MSG, SFT035_MSG
+    
+    '承認ステータス
+    proveStatusList.Add PS001_MSG, PS001_MSG
+    proveStatusList.Add PS002_MSG, PS002_MSG
+    proveStatusList.Add PS003_MSG, PS003_MSG
+    proveStatusList.Add PS004_MSG, PS004_MSG
  
 End Sub
 
@@ -253,11 +272,19 @@ Public Property Get getServiceFileTypeList() As Object
         
 End Property
 
+'承認ステータス
+Public Property Get getProveStatusList() As Object
+
+       Set getProveStatusList = proveStatusList
+        
+End Property
+
 Private Sub Class_Terminate()
     Set businessNameList = Nothing
     Set publishTypeList = Nothing
     Set agencyCompanyNameList = Nothing
     Set summitGroupNameList = Nothing
     Set serviceFileTypeList = Nothing
+    Set proveStatusList = Nothing
 End Sub
 

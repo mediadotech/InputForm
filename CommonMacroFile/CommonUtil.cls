@@ -188,6 +188,11 @@ Public Function findServiceFileType(str As String) As Boolean
     findServiceFileType = commonStr.getServiceFileTypeList.Exists(str)
 End Function
 
+'承認ステータス確認
+Public Function findgetProveStatus(str As String) As Boolean
+    findgetProveStatus = commonStr.getProveStatusList.Exists(str)
+End Function
+
 '全角カタカナ確認
 Public Function checkWideKana(row As Integer, col As Integer) As String
     checkWideKana = "OK"
