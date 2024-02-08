@@ -139,8 +139,10 @@ Private Const E1401_MSG As String = "ƒŒ[ƒeƒBƒ“ƒO‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”
 
 '<ŒöŠJ“ú©“®İ’è>
 Private Const E1500_MSG As String = "ŒöŠJ“ú©“®İ’è€–Ú‚Ü‚½ƒ^ƒCƒgƒ‹ID‚ª“ü—Í‚³‚ê‚Ä‚È‚¢‚Å‚·"
+'ƒRƒ“ƒeƒ“ƒcID
+Private Const E1501_MSG As String = "ƒRƒ“ƒeƒ“ƒcID‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp‰p”šABT0+17•¶š"
 '³”FƒXƒe[ƒ^ƒX
-Private Const E1501_MSG As String = "³”FƒXƒe[ƒ^ƒX‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA0i–¢İ’èjA1i³”FjA9i•Û—¯jA99iíœj"
+Private Const E1502_MSG As String = "³”FƒXƒe[ƒ^ƒX‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA0i–¢İ’èjA1i³”FjA9i•Û—¯jA99iíœj"
 
 
 '‹¤’Ê
@@ -392,4 +394,8 @@ End Property
 
 Public Property Get E1501() As String
     E1501 = E1501_MSG
+End Property
+
+Public Property Get E1502() As String
+    E1502 = E1502_MSG
 End Property
