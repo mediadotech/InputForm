@@ -140,7 +140,7 @@ Private Const E1401_MSG As String = "ƒŒ[ƒeƒBƒ“ƒO‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”
 '<ŒöŠJ“úŽ©“®Ý’è>
 Private Const E1500_MSG As String = "ŒöŠJ“úŽ©“®Ý’è€–Ú‚Ü‚½ƒ^ƒCƒgƒ‹ID‚ª“ü—Í‚³‚ê‚Ä‚È‚¢‚Å‚·"
 '³”FƒXƒe[ƒ^ƒX
-Private Const E1501_MSG As String = "³”FƒXƒe[ƒ^ƒX‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”ŽšA1i³”FjA2i–¢Ý’èjA3i•Û—¯j"
+Private Const E1501_MSG As String = "³”FƒXƒe[ƒ^ƒX‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”ŽšA0i–¢Ý’èjA1i³”FjA9i•Û—¯jA99iíœj"
 
 
 '‹¤’Ê
