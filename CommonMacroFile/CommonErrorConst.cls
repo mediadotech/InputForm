@@ -39,6 +39,8 @@ Private Const ET012_MSG As String = "‘“XID‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "4•¶šˆÈ
 Private Const ET013_MSG As String = "‘“XƒOƒ‹[ƒvID‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "25•¶šˆÈ“àA”¼Šp‰p”š "
 'ƒ^ƒCƒgƒ‹ID
 Private Const ET014_MSG As String = "ƒ^ƒCƒgƒ‹ID‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”š"
+'ƒRƒ“ƒeƒ“ƒcID
+Private Const ET015_MSG As String = "ƒRƒ“ƒeƒ“ƒcID‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp‰p”šABT0+17•¶š"
 
 '<x•¥æ“o˜^>
 'x•¥æƒR[ƒh
@@ -139,11 +141,13 @@ Private Const E1401_MSG As String = "ƒŒ[ƒeƒBƒ“ƒO‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”
 
 '<ŒöŠJ“ú©“®İ’è>
 Private Const E1500_MSG As String = "ŒöŠJ“ú©“®İ’è€–Ú‚Ü‚½ƒ^ƒCƒgƒ‹ID‚ª“ü—Í‚³‚ê‚Ä‚È‚¢‚Å‚·"
-'ƒRƒ“ƒeƒ“ƒcID
-Private Const E1501_MSG As String = "ƒRƒ“ƒeƒ“ƒcID‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp‰p”šABT0+17•¶š"
 '³”FƒXƒe[ƒ^ƒX
-Private Const E1502_MSG As String = "³”FƒXƒe[ƒ^ƒX‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA0i–¢İ’èjA1i³”FjA9i•Û—¯jA99iíœj"
+Private Const E1501_MSG As String = "³”FƒXƒe[ƒ^ƒX‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "”¼Šp”šA0i–¢İ’èjA1i³”FjA9i•Û—¯jA99iíœj"
 
+'<ŒöŠJ“úè“®İ’è>
+Private Const E1600_MSG As String = "ŒöŠJ“úè“®İ’è€–Ú‚Ü‚½ƒ^ƒCƒgƒ‹ID‚ª“ü—Í‚³‚ê‚Ä‚È‚¢‚Å‚·"
+'ŒöŠJ“ú
+Private Const E1601_MSG As String = "ŒöŠJ“ú‚ª³‚µ‚­‚È‚¢‚Å‚·" & vbCrLf & "yyyy/mm/dd"
 
 '‹¤’Ê
 Public Property Get ET000() As String
@@ -204,6 +208,10 @@ End Property
 
 Public Property Get ET014() As String
     ET014 = ET014_MSG
+End Property
+
+Public Property Get ET015() As String
+    ET015 = ET015_MSG
 End Property
 
 
@@ -396,6 +404,12 @@ Public Property Get E1501() As String
     E1501 = E1501_MSG
 End Property
 
-Public Property Get E1502() As String
-    E1502 = E1502_MSG
+'<ŒöŠJ“úè“®İ’è>
+Public Property Get E1600() As String
+    E1600 = E1600_MSG
 End Property
+
+Public Property Get E1601() As String
+    E1601 = E1601_MSG
+End Property
+
