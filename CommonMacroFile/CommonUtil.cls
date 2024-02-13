@@ -68,7 +68,6 @@ Public Function checkUpperChar(str As String) As String
     Set reg = Nothing
 End Function
 
-
 '文字列が半角大文字英数字になっているか確認
 Public Function checkNarrowUpperCharNum(str As String) As String
     Dim targetStr As String
@@ -123,7 +122,6 @@ Public Function checkZipCode(str As String) As String
     checkZipCode = reg.Replace(str, "")
     Set reg = Nothing
 End Function
-
 
 '正規表現でメールアドレスの形式を確認する
 Private Function checkMailAdess(getVal As Variant) As Boolean
@@ -394,7 +392,6 @@ Public Function checkDate(row As Integer, col As Integer) As Object
     startDateCol = col
     endDateCol = startDateCol + 1
     
-    
     'サービス開始日
     targetResult.setCol = startDateCol
     Dim startDate As String
@@ -432,7 +429,7 @@ Public Function checkDate(row As Integer, col As Integer) As Object
 End Function
 
 '正規表現で日付の形式を確認する
-Private Function checkDateForm(str As String) As Boolean
+Public Function checkDateForm(str As String) As Boolean
     '正規表現クラスオブジェクト
     Dim reg
     Set reg = CreateObject("VBScript.RegExp")
@@ -524,6 +521,31 @@ Public Function chekTitleID(row As Integer, col As Integer) As Object
     
     Set chekTitleID = targetResult
     
+End Function
+
+'コンテンツID確認
+Public Function chekContentID(row As Integer, col As Integer) As Object
+    
+    Dim targetResult As InputResult
+    Set targetResult = New InputResult
+    
+    targetResult.setRow = row
+    targetResult.setCol = col
+    targetResult.setResult = "OK"
+    
+    Dim targetStr As String
+    targetStr = Cells(row, col).Value
+    
+    '全角かつ英数字ではないかつ20文字を超えた場合
+    If hasZenkaku(targetStr) Or Len(findJapanese(targetStr)) > 0 Or Len(Trim(targetStr)) <> 20 Then
+        targetResult.setResult = "ET015"
+    'BT0から始まってるか確認
+    ElseIf Not Left(targetStr, 3) = "BT0" Then
+        targetResult.setResult = "ET015"
+    End If
+    
+    Set chekContentID = targetResult
+     
 End Function
 
 Private Sub Class_Terminate()
