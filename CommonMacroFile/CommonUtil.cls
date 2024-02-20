@@ -46,7 +46,7 @@ Public Function checkNarrowNum(str As String) As String
     Dim reg
     Set reg = CreateObject("VBScript.RegExp")
     'ŒŸõğŒ”¼Šp”š
-    reg.Pattern = "^[0-9]+$"
+    reg.Pattern = "[0-9]"
     '•¶š—ñ‚ÌÅŒã‚Ü‚ÅŒŸõ‚·‚é
     reg.Global = True
     'w’èƒZƒ‹‚Ì”¼Šp”š‚ğ‹ó•¶š‚É’u‚«Š·‚¦‚é
